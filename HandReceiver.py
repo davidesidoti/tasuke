@@ -1,8 +1,7 @@
 # IMPORTO TUTTI I MODULI CHE MI SERVIRANNO
-import struct
-
 import cv2
 import serial
+import struct
 from cvzone.HandTrackingModule import HandDetector
 
 # INIZIALIZZO LA VIDEOCAMERA
@@ -27,9 +26,13 @@ while True:
         handType = hand["type"]  # Handtype Left or Right
 
         fingers = detector.fingersUp(hand)
-        length, info, img = detector.findDistance(lmList[8], lmList[5], img)  # with draw
-        print(length)
-        # INVIO I DATI AD ARDUINO
+        # ! QUESTE RIGHE SERVONO PER MUOVERE I SERVO IN BASE ALL'ANGOLAZIONE DELLE DITA
+        # thumb_length, info1, img = detector.findDistance(lmList[4], lmList[2], img)  # with draw
+        # index_length, info2, img = detector.findDistance(lmList[8], lmList[5], img)  # with draw
+        # middle_length, info3, img = detector.findDistance(lmList[12], lmList[9], img)  # with draw
+        # ring_length, info4, img = detector.findDistance(lmList[16], lmList[13], img)  # with draw
+        # pinky_length, info5, img = detector.findDistance(lmList[20], lmList[17], img)  # with draw
+        # arduino.write(struct.pack('>BBBBB', int(thumb_length), int(index_length), int(middle_length), int(ring_length), int(pinky_length)))
         arduino.write(struct.pack('>BBBBB', fingers[0], fingers[1], fingers[2], fingers[3], fingers[4]))
 
     # Display

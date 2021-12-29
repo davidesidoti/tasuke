@@ -34,6 +34,22 @@ void loop() {
   // RICEVO I DATI
   Receive();
 
+// ! QUESTE RIGHE SERVONO PER MUOVERE I SERVO IN BASE ALL'ANGOLAZIONE DELLE DITA
+//  int angle1 = map(incoming[0], 25, 70, 0, 90);
+//  thumb.write(angle1);
+//
+//  int angle2 = map(incoming[1], 10, 85, 0, 90);
+//  index.write(angle2);
+//
+//  int angle3 = map(incoming[2], 20, 100, 0, 90);
+//  middle.write(angle3);
+//
+//  int angle4 = map(incoming[3], 20, 90, 0, 90);
+//  ring.write(angle4);
+//
+//  int angle5 = map(incoming[4], 15, 70, 0, 90);
+//  pinky.write(angle5);
+
   // APPLICO I DATI
   // POLLICE
   if (incoming[0] == 1) {
